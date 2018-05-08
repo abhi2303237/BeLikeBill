@@ -33,6 +33,7 @@ public class UserInterface extends JFrame{
 	
 	public UserInterface(){
 		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setTitle("Be Like Bill");
 		fname = new JTextField(40);
 		femail = new JTextField(40);
