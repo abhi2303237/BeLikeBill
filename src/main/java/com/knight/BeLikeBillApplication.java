@@ -13,8 +13,10 @@ import com.knight.bean.UserInterface;
 public class BeLikeBillApplication {
 
 	public static void main(String[] args) {
-		ConfigurableApplicationContext ctx = new SpringApplicationBuilder(BeLikeBillApplication.class)
-                .headless(false).run(args);
+		 new SpringApplicationBuilder(BeLikeBillApplication.class)
+                .headless(false)
+                .web(false)
+                .run(args);
 		
 		EventQueue.invokeLater(() -> {
 			UserInterface ui;
