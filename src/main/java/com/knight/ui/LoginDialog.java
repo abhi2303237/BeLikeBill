@@ -4,6 +4,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.EOFException;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -18,6 +19,8 @@ import javax.swing.border.EmptyBorder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.knight.bean.UserService;
+
 @Component
 public class LoginDialog extends JDialog {
 
@@ -26,9 +29,12 @@ public class LoginDialog extends JDialog {
 	private JPasswordField passwordField;
 	@Autowired
 	private MainWindow mw;
+	@Autowired
+	private UserService us;
 
 	
 	public LoginDialog() {
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setTitle("Login");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
@@ -90,9 +96,21 @@ public class LoginDialog extends JDialog {
 				okButton.setActionCommand("OK");
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent a) {
-						System.out.println("Pressed OK");
-						mw.setVisible();
-						dispose();
+						System.out.println("Pressed OK"+passwordField.getText()+us.getByEmail(textField.getText()).getPasswd());
+						try {
+						if (us.getByEmail(textField.getText()).getPasswd().equals(passwordField.getText())) {
+							
+							System.out.println("Password Matched");
+							mw.setVisible();
+							dispose();
+						}
+						else {
+							System.out.println("wrong password");
+						}
+						}
+						catch (Exception e){
+							System.out.println("Exception Handled");
+						}
 					}
 				});
 				buttonPane.add(okButton);

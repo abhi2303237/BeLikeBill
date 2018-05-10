@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class UserInterface extends JFrame{
 	
 	@Autowired
@@ -52,8 +52,6 @@ public class UserInterface extends JFrame{
 				UserInfo user = new UserInfo();
 				user.setEmail(femail.getText());
 				user.setName(fname.getText());
-				user.setPasswd(fpasswd.getText());
-				user.setMarks(Integer.parseInt(fmark.getText()));
 				userService.saveUser(user);
 				lout.setText("Cleared");
 			}
