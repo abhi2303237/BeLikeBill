@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import java.awt.EventQueue;
 
-import com.knight.bean.UserInterface;
+import com.knight.ui.LoginDialog;
 
 @SpringBootApplication
 public class BeLikeBillApplication {
@@ -19,7 +19,7 @@ public class BeLikeBillApplication {
                 .run(args);
 		
 		EventQueue.invokeLater(() -> {
-			UserInterface ui;
+			LoginDialog login;
 		});
 	}
 }
